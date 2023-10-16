@@ -15,6 +15,7 @@ body{
     width:50vw;
     position:relative;
     top: -80vh;
+    animation:roadanimation 20s linear infinite;
 }
 #start{
     position: absolute;
@@ -120,6 +121,14 @@ body{
 @keyframes enemyCarImage4{
     0%{
         top:-80vh;
+    }
+    100%{
+        top:100vh;
+    }
+}
+@keyframes roadanimation{
+    0%{
+        top:-30vh;
     }
     100%{
         top:100vh;

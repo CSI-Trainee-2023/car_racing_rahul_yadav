@@ -21,3 +21,16 @@ window.addEventListener("keydown", function (x) {
     this.document.getElementById("myCar").style.top=`${t}vh`
     this.document.getElementById("myCar").style.left=`${l}vw`
 });
+    document.getElementById("start").addEventListener("click",function(){
+    
+    document.getElementById("start").style.display='none'
+    document.getElementById("road").style.animation='roadanimation 20s linear infinite'
+
+    
+
+    document.getElementById("enemyCar1").style.animation='enemyCarImage1 3s linear infinite'
+    document.getElementById("enemyCar2").style.animation='enemyCarImage2 2s linear infinite'
+    document.getElementById("enemyCar3").style.animation='enemyCarImage3 4s linear infinite'
+    document.getElementById("enemyCar4").style.animation='enemyCarImage4 6s linear infinite'
+
+})
