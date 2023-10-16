@@ -47,6 +47,7 @@ body{
     height:100px;
     left:310px;
     z-index: 1001;
+    animation: enemyCarImage1 infinite linear 3s;
 }
 #enemyCar2{
     display:grid;
@@ -54,8 +55,9 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:310px;
+    left:110px;
     z-index: 1001;
+    animation: enemyCarImage2 infinite linear 2s;
 }
 #enemyCar3{
     display:grid;
@@ -63,8 +65,9 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:310px;
+    left:-90px;
     z-index: 1001;
+    animation: enemyCarImage3 infinite linear 4s;
 }
 #enemyCar4{
     display:grid;
@@ -72,12 +75,56 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:310px;
+    left:-290px;
+    z-index: 1001;
+    animation: enemyCarImage4 infinite linear 6s;
+}
+#myCar{
+    /* display:grid; */
+    /* place-items: center; */
+    position:relative;
+    width:100px;
+    height:100px;
+    /* left: 10px; */
+    top:15vh;
     z-index: 1001;
 }
+
 .enemyCarImg{
     width: 80px;
 }
+@keyframes enemyCarImage1{
+    0%{
+        top:-30vh;
+    }
+    100%{
+        top:100vh;
+    }
+}
+@keyframes enemyCarImage2{
+    0%{
+        top:-50vh;
+    }
+    100%{
+        top:100vh;
+    }
+}
+@keyframes enemyCarImage3{
+    0%{
+        top:-60vh;
+    }
+    100%{
+        top:100vh;
+    }
+}
+@keyframes enemyCarImage4{
+    0%{
+        top:-80vh;
+    }
+    100%{
+        top:100vh;
+    }
+}
 .myCarImg{
     width: 80px;
-}
+} 
