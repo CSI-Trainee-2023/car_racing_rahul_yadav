@@ -24,7 +24,7 @@ window.addEventListener("keydown", function (x) {
     document.getElementById("start").addEventListener("click", function () {
 
         document.getElementById("start").style.display = 'none'
-        document.getElementById("road").style.animation = 'roadanimation 20s linear infinite'
+        document.getElementById("road").style.animation = 'roadanimation 40s linear infinite'
 
 
         setInterval(() => {
@@ -49,8 +49,13 @@ window.addEventListener("keydown", function (x) {
         }, 4000)
 
 
-        document.getElementById("enemyCar1").style.animation = 'ecar1 3s linear infinite'
-        document.getElementById("enemyCar2").style.animation = 'ecar2 6s linear infinite'
-        document.getElementById("enemyCar3").style.animation = 'ecar3 5s linear infinite'
-        document.getElementById("enemyCar4").style.animation = 'ecar4 4s linear infinite'
+        document.getElementById("enemyCar1").style.animation = 'ecar1 2s linear infinite'
+        document.getElementById("enemyCar2").style.animation = 'ecar2 4s linear infinite'
+        document.getElementById("enemyCar3").style.animation = 'ecar3 3s linear infinite'
+        document.getElementById("enemyCar4").style.animation = 'ecar4 5s linear infinite'
+        n=0;
+        setInterval(() => {
+            document.getElementById("score").innerText=`score : ${n}`
+            n=n+1
+        },  100);
 });
