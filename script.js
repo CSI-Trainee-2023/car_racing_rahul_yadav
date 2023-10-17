@@ -28,29 +28,29 @@ window.addEventListener("keydown", function (x) {
 
 
         setInterval(() => {
-            num = Math.floor(Math.random() * (350 - 230 + 1) + 230)
+            num = Math.floor(Math.random() * (320 - 220 + 1) + 220)
             document.getElementById("enemyCar1").style.left = `${num}px`
+
+        }, 4000)
+        setInterval(() => {
+            num = Math.floor(Math.random() * (170 - 55 + 1) + 55)
+            document.getElementById("enemyCar2").style.left = `${num}px`
+
+        }, 2000)
+        setInterval(() => {
+            num = Math.floor(Math.random() * (-50 +150 + 1) - 150)
+            document.getElementById("enemyCar3").style.left = `${num}px`
 
         }, 3000)
         setInterval(() => {
-            num = Math.floor(Math.random() * (150 - 50 + 1) + 50)
-            document.getElementById("enemyCar2").style.left = `${num}px`
-
-        }, 6000)
-        setInterval(() => {
-            num = Math.floor(Math.random() * (-50 + 140 + 1) - 140)
-            document.getElementById("enemyCar3").style.left = `${num}px`
-
-        }, 5000)
-        setInterval(() => {
-            num = Math.floor(Math.random() * (-220 + 330 + 1) - 330)
+            num = Math.floor(Math.random() * (-210 + 295 + 1) - 295)
             document.getElementById("enemyCar4").style.left = `${num}px`
 
-        }, 4000)
+        }, 5000)
 
 
-        document.getElementById("enemyCar1").style.animation = 'ecar1 2s linear infinite'
-        document.getElementById("enemyCar2").style.animation = 'ecar2 4s linear infinite'
+        document.getElementById("enemyCar1").style.animation = 'ecar1 4s linear infinite'
+        document.getElementById("enemyCar2").style.animation = 'ecar2 2s linear infinite'
         document.getElementById("enemyCar3").style.animation = 'ecar3 3s linear infinite'
         document.getElementById("enemyCar4").style.animation = 'ecar4 5s linear infinite'
 
@@ -89,7 +89,7 @@ window.addEventListener("keydown", function (x) {
             var mycar_top = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().top);
             var mycar_bottom = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().bottom);
 
-            if (mycar_left < 450 || mycar_right > 1130 || mycar_top < 20 || mycar_bottom > 690) {
+            if (mycar_left < 275 || mycar_right > 950 || mycar_top < 20 || mycar_bottom > 690) {
                 setTimeout(() => {
                     alert(`GAME OVER!`)
                 })

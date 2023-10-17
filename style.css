@@ -3,18 +3,20 @@
     padding:0;
 }
 body{
-    background: url("assets/backgroundImg.jpeg") no-repeat center;
+    background: url("assets/background.png") no-repeat center;
     background-size: cover;
     height: 100vh;
     display:grid;
     place-items: center;
+    overflow: hidden;
 }
 #road{
-    background: url("assets/roadImage.jpg" ) repeat-y;
+    background: url("assets/road2.png" )  repeat-y;
+    background-size: 100% auto;
     height:1200vh;
-    width:50vw;
+    width:64vw;
     position:relative;
-    top: -80vh;
+    top: -100vh;
     z-index: -9;
     /* animation:roadanimation 20s linear infinite; */
 }
@@ -44,7 +46,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:285px;
+    left:280px;
     z-index: 1001;
     /* animation: enemyCarImage1 infinite linear 3s; */
 }
@@ -53,7 +55,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:110px;
+    left:100px;
     z-index: 1001;
     /* animation: enemyCarImage2 infinite linear 2s; */
 }
@@ -62,7 +64,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:-90px;
+    left:-120px;
     z-index: 1001;
     /* animation: enemyCarImage3 infinite linear 4s; */
 }
@@ -71,7 +73,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    left:-290px;
+    left:-295px;
     z-index: 1001;
     /* animation: enemyCarImage4 infinite linear 6s; */
 }
@@ -79,7 +81,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    top:15vh;
+    top:6vh;
 }
 
 .enemyCarImg{
