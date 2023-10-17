@@ -89,7 +89,13 @@ window.addEventListener("keydown", function (x) {
             var mycar_top = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().top);
             var mycar_bottom = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().bottom);
 
+            if (mycar_left < 450 || mycar_right > 1130 || mycar_top < 20 || mycar_bottom > 690) {
+                setTimeout(() => {
+                    alert(`GAME OVER!`)
+                })
+                location.reload()
 
+            }
             
             if (((ecar1_left < mycar_left && mycar_left < ecar1_right) || (ecar1_left < mycar_right && mycar_right < ecar1_right)) && ((ecar1_top < mycar_top && mycar_top < ecar1_bottom) || (ecar1_top < mycar_bottom && mycar_bottom < ecar1_bottom))) {
 
