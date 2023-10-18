@@ -52,6 +52,15 @@ body{
     /* z-index: 110; */
 
 }
+#speedBooster{
+    
+    position:relative;
+    width:100px;
+    height:100px;
+    left:0px;
+    z-index: 1001;
+    /* animation: enemyCarImage1 infinite linear 3s; */
+}
 #enemyCar1{
     
     position:relative;
@@ -99,6 +108,9 @@ body{
     width: 80px;
     /* border: 2px solid red; */
 }
+.speedBoosterImg{
+    width:60px;
+}
 
 @keyframes ecar1{
     0%{
@@ -138,6 +150,14 @@ body{
     }
     100%{
         top:-200vh;
+    }
+}
+@keyframes sbooster{
+    0%{
+        top:-80vh;
+    }
+    100%{
+        top:100vh;
     }
 }
 .myCarImg{

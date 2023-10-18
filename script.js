@@ -2,6 +2,7 @@
 
 let l=0;
 let highestScore = localStorage.getItem("highestScore") || 0;
+let gameRunning = true;
 function restartGame() {
     location.reload();
 }
@@ -43,7 +44,11 @@ window.addEventListener("keydown", function (x) {
         
         document.getElementById("road").style.animation = 'roadanimation 40s linear infinite'
 
+        // setInterval(() => {
+        //     num = Math.floor(Math.random() * (1060 +265 + 1) -265)
+        //     document.getElementById("speedBooster").style.left = `${num}px`
 
+        // }, 10000)
         setInterval(() => {
             num = Math.floor(Math.random() * (320 - 220 + 1) + 220)
             document.getElementById("enemyCar1").style.left = `${num}px`
@@ -70,12 +75,13 @@ window.addEventListener("keydown", function (x) {
         document.getElementById("enemyCar2").style.animation = 'ecar2 2.5s linear infinite'
         document.getElementById("enemyCar3").style.animation = 'ecar3 3s linear infinite'
         document.getElementById("enemyCar4").style.animation = 'ecar4 5s linear infinite'
+        // document.getElementById("speedBooster").style.animation = 'sbooster 10s linear infinite'
 
 
 
         n = 0
         setInterval(() => {
-
+            if (gameRunning) {
             document.getElementById("score").innerText = `Score : ${n}`
             n = n + 1
             document.getElementById("highScore").innerText = `Highest Score : ${highestScore}`
@@ -84,7 +90,12 @@ window.addEventListener("keydown", function (x) {
                 localStorage.setItem("highestScore", highestScore);
                 document.getElementById("highScore").innerText = `Highest Score : ${n}`
             }
-
+        }
+            // var sbooster_left = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().left);
+            // var sbooster_right = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().right);
+            // var sbooster_top = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().top);
+            // var sbooster_bottom = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().bottom);
+        
             var ecar1_left = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().left);
             var ecar1_right = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().right);
             var ecar1_top = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().top);
@@ -121,6 +132,16 @@ window.addEventListener("keydown", function (x) {
                 document.getElementById("road").style.animationPlayState = 'running';
             }
 
+            // if(((sbooster_left < mycar_left && mycar_left < sbooster_right) || (sbooster_left < mycar_right && mycar_right < sbooster_right)) && ((sbooster_top < mycar_top && mycar_top < sbooster_bottom) || (sbooster_top < mycar_bottom && mycar_bottom <sbooster_bottom)))
+            // {
+            //     setInterval(() => {
+            //         document.getElementById("road").style.animation = 'roadanimation 20s linear infinite'
+        
+            //     }, 4000)
+            // }
+
+
+
             if (mycar_left < 265 || mycar_right > 1060 || mycar_top < 20 || mycar_bottom > 690 ||
                 ((ecar1_left < mycar_left && mycar_left < ecar1_right) || (ecar1_left < mycar_right && mycar_right < ecar1_right)) && ((ecar1_top < mycar_top && mycar_top < ecar1_bottom) || (ecar1_top < mycar_bottom && mycar_bottom < ecar1_bottom)) ||
                 ((ecar2_left < mycar_left && mycar_left < ecar2_right) || (ecar2_left < mycar_right && mycar_right < ecar2_right)) && ((ecar2_top < mycar_top && mycar_top < ecar2_bottom) || (ecar2_top < mycar_bottom && mycar_bottom < ecar2_bottom)) ||
@@ -129,6 +150,7 @@ window.addEventListener("keydown", function (x) {
             ) {
                 document.getElementById("startSound").pause();
                 document.getElementById("sideCollisionSound").play();
+                gameRunning = false;
                 
                 stopGame();
                 document.getElementById("endPage").style.display = 'flex';
