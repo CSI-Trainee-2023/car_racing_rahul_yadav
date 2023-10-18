@@ -81,7 +81,7 @@ body{
     position:relative;
     width:100px;
     height:100px;
-    top:6vh;
+    top:14vh;
 }
 
 .enemyCarImg{
@@ -133,3 +133,4 @@ body{
     /* border:2px solid red; */
     width:80px;
 }
+

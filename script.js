@@ -1,29 +1,55 @@
-let t=0;
+// let t=0;
+
 let l=0;
 
 window.addEventListener("keydown", function (x) {
-    if (x.keyCode == 87) {
-        // alert("w")
-        t=t-3;
-    };
+    // if (x.keyCode == 87) {
+    //     // alert("w")
+    //     t=t-3;
+    // };
     if (x.keyCode == 65) {
         // alert("a")
-        l=l-1;
+        l=l-0.4;
     };
-    if (x.keyCode == 83) {
-        // alert("s")
-        t=t+3;
-    };
+    // if (x.keyCode == 83) {
+    //     // alert("s")
+    //     t=t+3;
+    // };
     if (x.keyCode == 68) {
         // alert("d")
-        l=l+1;
+        l=l+0.4;
     };
-    document.getElementById("myCar").style.top=`${t}vh`;
+    // document.getElementById("myCar").style.top=`${t}vh`;
     document.getElementById("myCar").style.left=`${l}vw`;
 });
     document.getElementById("start").addEventListener("click", function () {
         document.getElementById("startSound").play();
         document.getElementById("start").style.display = 'none'
+        let countdown = 3;
+        const countdownElement = document.createElement("div");
+        countdownElement.style.position = "fixed";
+        countdownElement.style.top = "50%";
+        countdownElement.style.left = "50%";
+        countdownElement.style.color="darkgreen";
+        countdownElement.style.transform = "translate(-50%, -50%)";
+        countdownElement.style.fontSize = "8em";
+        document.body.appendChild(countdownElement);
+        
+        const countdownInterval = setInterval(() => {
+            if (countdown > 0) {
+                countdownElement.innerText = countdown;
+                countdown--;
+            } 
+            else if(countdown==0){
+                countdownElement.innerText = "GO!";
+                countdown--;
+            }
+            else {
+                // countdownElement.innerText = "GO!";
+                document.body.removeChild(countdownElement);    
+        // document.getElementById("startSound").play();
+        setTimeout(() => {
+        // document.getElementById("start").style.display = 'none'
         document.getElementById("road").style.animation = 'roadanimation 40s linear infinite'
 
 
@@ -36,7 +62,7 @@ window.addEventListener("keydown", function (x) {
             num = Math.floor(Math.random() * (170 - 55 + 1) + 55)
             document.getElementById("enemyCar2").style.left = `${num}px`
 
-        }, 2000)
+        }, 2500)
         setInterval(() => {
             num = Math.floor(Math.random() * (-50 +150 + 1) - 150)
             document.getElementById("enemyCar3").style.left = `${num}px`
@@ -50,7 +76,7 @@ window.addEventListener("keydown", function (x) {
 
 
         document.getElementById("enemyCar1").style.animation = 'ecar1 4s linear infinite'
-        document.getElementById("enemyCar2").style.animation = 'ecar2 2s linear infinite'
+        document.getElementById("enemyCar2").style.animation = 'ecar2 2.5s linear infinite'
         document.getElementById("enemyCar3").style.animation = 'ecar3 3s linear infinite'
         document.getElementById("enemyCar4").style.animation = 'ecar4 5s linear infinite'
 
@@ -89,48 +115,29 @@ window.addEventListener("keydown", function (x) {
             var mycar_top = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().top);
             var mycar_bottom = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().bottom);
 
-            if (mycar_left < 275 || mycar_right > 950 || mycar_top < 20 || mycar_bottom > 690) {
+  
+
+            if (mycar_left < 265 || mycar_right > 1060 || mycar_top < 20 || mycar_bottom > 690 ||
+                ((ecar1_left < mycar_left && mycar_left < ecar1_right) || (ecar1_left < mycar_right && mycar_right < ecar1_right)) && ((ecar1_top < mycar_top && mycar_top < ecar1_bottom) || (ecar1_top < mycar_bottom && mycar_bottom < ecar1_bottom)) ||
+                ((ecar2_left < mycar_left && mycar_left < ecar2_right) || (ecar2_left < mycar_right && mycar_right < ecar2_right)) && ((ecar2_top < mycar_top && mycar_top < ecar2_bottom) || (ecar2_top < mycar_bottom && mycar_bottom < ecar2_bottom)) ||
+                ((ecar3_left < mycar_left && mycar_left < ecar3_right) || (ecar3_left < mycar_right && mycar_right < ecar3_right)) && ((ecar3_top < mycar_top && mycar_top < ecar3_bottom) || (ecar3_top < mycar_bottom && mycar_bottom < ecar3_bottom)) ||
+                ((ecar4_left < mycar_left && mycar_left < ecar4_right) || (ecar4_left < mycar_right && mycar_right < ecar4_right)) && ((ecar4_top < mycar_top && mycar_top < ecar4_bottom) || (ecar4_top < mycar_bottom && mycar_bottom < ecar4_bottom))
+            ) {
+                document.getElementById("startSound").pause();
                 document.getElementById("sideCollisionSound").play();
-                setTimeout(() => {
-                    alert(`GAME OVER!`)
-                })
-                location.reload()
-
-            }
             
-            if (((ecar1_left < mycar_left && mycar_left < ecar1_right) || (ecar1_left < mycar_right && mycar_right < ecar1_right)) && ((ecar1_top < mycar_top && mycar_top < ecar1_bottom) || (ecar1_top < mycar_bottom && mycar_bottom < ecar1_bottom))) {
-                document.getElementById("outOfRoadSound").play();
+            
+            
                 setTimeout(() => {
-                    alert(`GAME OVER!`)
-                })
+                    alert(`GAME OVER!`);
+                });
                 location.reload()
-
-            }
-            if (((ecar2_left < mycar_left && mycar_left < ecar2_right) || (ecar2_left < mycar_right && mycar_right < ecar2_right)) && ((ecar2_top < mycar_top && mycar_top < ecar2_bottom) || (ecar2_top < mycar_bottom && mycar_bottom < ecar2_bottom))) {
-                document.getElementById("outOfRoadSound").play();
-                setTimeout(() => {
-                    alert(`GAME OVER!`)
-                })
-                location.reload()
-
-            }
-            if (((ecar3_left < mycar_left && mycar_left < ecar3_right) || (ecar3_left < mycar_right && mycar_right < ecar3_right)) && ((ecar3_top < mycar_top && mycar_top < ecar3_bottom) || (ecar3_top < mycar_bottom && mycar_bottom < ecar3_bottom))) {
-                document.getElementById("outOfRoadSound").play();
-                setTimeout(() => {
-                    alert(`GAME OVER!`)
-                })
-                location.reload()
-
-            }
-            if (((ecar4_left < mycar_left && mycar_left < ecar4_right) || (ecar4_left < mycar_right && mycar_right < ecar4_right)) && ((ecar4_top < mycar_top && mycar_top < ecar4_bottom) || (ecar4_top < mycar_bottom && mycar_bottom < ecar4_bottom))) {
-                document.getElementById("outOfRoadSound").play();
-                setTimeout(() => {
-                    alert(`GAME OVER!`)
-                })
-                location.reload()
-
             }
 
 
         }, 100)
+    }, 30); // 3 seconds delay before the game starts running
+    clearInterval(countdownInterval);
+}
+}, 1500);
 });
