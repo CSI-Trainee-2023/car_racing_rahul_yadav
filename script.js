@@ -1,25 +1,17 @@
-// let t=0;
+
 
 let l=0;
+function restartGame() {
+    location.reload();
+}
 
 window.addEventListener("keydown", function (x) {
-    // if (x.keyCode == 87) {
-    //     // alert("w")
-    //     t=t-3;
-    // };
     if (x.keyCode == 65) {
-        // alert("a")
         l=l-0.4;
     };
-    // if (x.keyCode == 83) {
-    //     // alert("s")
-    //     t=t+3;
-    // };
     if (x.keyCode == 68) {
-        // alert("d")
         l=l+0.4;
     };
-    // document.getElementById("myCar").style.top=`${t}vh`;
     document.getElementById("myCar").style.left=`${l}vw`;
 });
     document.getElementById("start").addEventListener("click", function () {
@@ -45,11 +37,9 @@ window.addEventListener("keydown", function (x) {
                 countdown--;
             }
             else {
-                // countdownElement.innerText = "GO!";
                 document.body.removeChild(countdownElement);    
-        // document.getElementById("startSound").play();
         setTimeout(() => {
-        // document.getElementById("start").style.display = 'none'
+        
         document.getElementById("road").style.animation = 'roadanimation 40s linear infinite'
 
 
@@ -115,7 +105,16 @@ window.addEventListener("keydown", function (x) {
             var mycar_top = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().top);
             var mycar_bottom = Math.abs(document.getElementById("myCarImg1").getBoundingClientRect().bottom);
 
-  
+            function stopGame() {
+                gameRunning = false;
+                document.getElementById("road").style.animationPlayState = 'paused';
+                document.getElementById("sideCollisionSound").pause();
+            }
+            
+            function startGame() {
+                gameRunning = true;
+                document.getElementById("road").style.animationPlayState = 'running';
+            }
 
             if (mycar_left < 265 || mycar_right > 1060 || mycar_top < 20 || mycar_bottom > 690 ||
                 ((ecar1_left < mycar_left && mycar_left < ecar1_right) || (ecar1_left < mycar_right && mycar_right < ecar1_right)) && ((ecar1_top < mycar_top && mycar_top < ecar1_bottom) || (ecar1_top < mycar_bottom && mycar_bottom < ecar1_bottom)) ||
@@ -125,18 +124,23 @@ window.addEventListener("keydown", function (x) {
             ) {
                 document.getElementById("startSound").pause();
                 document.getElementById("sideCollisionSound").play();
+                
+                stopGame();
+                document.getElementById("endPage").style.display = 'flex';
+                document.getElementById("endScore").innerText = ` Your Score: ${n}`;
+                document.getElementById("highestScore").innerText = `Highest Score: ${highestScore}`;
             
-            
-            
-                setTimeout(() => {
-                    alert(`GAME OVER!`);
-                });
-                location.reload()
+                
             }
+            document.getElementById("restartButton").addEventListener("click", function() {
+                startGame();
+                document.getElementById("endPage").style.display = 'none';
+                restartGame();
+            });
 
 
         }, 100)
-    }, 30); // 3 seconds delay before the game starts running
+    }, 30); 
     clearInterval(countdownInterval);
 }
 }, 1500);

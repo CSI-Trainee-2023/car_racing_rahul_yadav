@@ -22,7 +22,8 @@
       <audio id="sideCollisionSound">
         <source src="assets/sidecollision.mp3" type="audio/mpeg">
       </audio>
-    <div id="score">score : 0</div>
+      
+    <div id="score">Score : 0</div>
     <button id="start">Start</button>
     <div> 
         <div id="enemyCar1">
@@ -43,6 +44,20 @@
         <img id="myCarImg1" class="myCarImg" src="assets/mycar.png" alt="myCar1">
     </div>
     <div id="road"></div>
+    <div id="endPage" class="end-page">
+        <div id="endContent" class="end-content">
+            <div id="titleAndGameOver">
+            <a id="title">BROKEN ENGINE</a>
+            <a id="gameOver">GAME OVER</a>
+            <div id="scores">
+                <a id="endScore"></a>
+                <a id="highestScore"></a>
+                
+            </div>
+        </div >
+            <button onclick="restartGame()" id="restartButton">Restart</button>
+        </div>
+    </div>
     
 </body>
 <script src="script.js"></script>
