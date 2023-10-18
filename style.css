@@ -14,7 +14,7 @@ body{
     background: url("assets/road2.png" )  repeat-y;
     background-size: 100% auto;
     height:1200vh;
-    width:64vw;
+    width:60vw;
     position:relative;
     top: -100vh;
     z-index: -9;
@@ -35,6 +35,17 @@ body{
     top: 20px;
     left: 20px;
     font-size:2rem;
+    padding:5px;
+    background-color: aliceblue;
+    border-radius: 20px;
+    /* z-index: 110; */
+
+}
+#highScore{
+    position: absolute;
+    top: 20px;
+    left: 1100px;
+    font-size:1.8rem;
     padding:5px;
     background-color: aliceblue;
     border-radius: 20px;

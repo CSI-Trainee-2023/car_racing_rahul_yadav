@@ -1,6 +1,7 @@
 
 
 let l=0;
+let highestScore = localStorage.getItem("highestScore") || 0;
 function restartGame() {
     location.reload();
 }
@@ -77,8 +78,12 @@ window.addEventListener("keydown", function (x) {
 
             document.getElementById("score").innerText = `Score : ${n}`
             n = n + 1
-
-
+            document.getElementById("highScore").innerText = `Highest Score : ${highestScore}`
+            if (n > highestScore) {
+                highestScore = n;
+                localStorage.setItem("highestScore", highestScore);
+                document.getElementById("highScore").innerText = `Highest Score : ${n}`
+            }
 
             var ecar1_left = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().left);
             var ecar1_right = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().right);
@@ -135,7 +140,7 @@ window.addEventListener("keydown", function (x) {
             document.getElementById("restartButton").addEventListener("click", function() {
                 startGame();
                 document.getElementById("endPage").style.display = 'none';
-                restartGame();
+                // restartGame();
             });
 
 
