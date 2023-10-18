@@ -7,6 +7,8 @@ function restartGame() {
     location.reload();
 }
 
+//                             eventlistner is added for mycar movement left and right
+
 window.addEventListener("keydown", function (x) {
     if (x.keyCode == 65) {
         l=l-0.4;
@@ -16,9 +18,13 @@ window.addEventListener("keydown", function (x) {
     };
     document.getElementById("myCar").style.left=`${l}vw`;
 });
+
+//                                countdown before the car racing will get start 
+
     document.getElementById("start").addEventListener("click", function () {
         document.getElementById("startSound").play();
         document.getElementById("start").style.display = 'none'
+        document.getElementById("titlee").style.display = 'none'
         let countdown = 3;
         const countdownElement = document.createElement("div");
         countdownElement.style.position = "fixed";
@@ -40,8 +46,11 @@ window.addEventListener("keydown", function (x) {
             }
             else {
                 document.body.removeChild(countdownElement);    
+
+                //                           animation for road movement from top to bottom
+
+
         setTimeout(() => {
-        
         document.getElementById("road").style.animation = 'roadanimation 40s linear infinite'
 
         // setInterval(() => {
@@ -49,6 +58,11 @@ window.addEventListener("keydown", function (x) {
         //     document.getElementById("speedBooster").style.left = `${num}px`
 
         // }, 10000)
+
+
+        //                                   random shift of enemy cars  from right limit to left limit
+
+
         setInterval(() => {
             num = Math.floor(Math.random() * (320 - 220 + 1) + 220)
             document.getElementById("enemyCar1").style.left = `${num}px`
@@ -71,6 +85,8 @@ window.addEventListener("keydown", function (x) {
         }, 5000)
 
 
+//                                        animation for enemy car from top to bottom  
+
         document.getElementById("enemyCar1").style.animation = 'ecar1 4s linear infinite'
         document.getElementById("enemyCar2").style.animation = 'ecar2 2.5s linear infinite'
         document.getElementById("enemyCar3").style.animation = 'ecar3 3s linear infinite'
@@ -78,6 +94,7 @@ window.addEventListener("keydown", function (x) {
         // document.getElementById("speedBooster").style.animation = 'sbooster 10s linear infinite'
 
 
+        //                              score card with count number with 1 for 100 ms and highest score
 
         n = 0
         setInterval(() => {
@@ -87,6 +104,7 @@ window.addEventListener("keydown", function (x) {
             document.getElementById("highScore").innerText = `Highest Score : ${highestScore}`
             if (n > highestScore) {
                 highestScore = n;
+                //                     heighest score is store in local storage 
                 localStorage.setItem("highestScore", highestScore);
                 document.getElementById("highScore").innerText = `Highest Score : ${n}`
             }
@@ -96,6 +114,9 @@ window.addEventListener("keydown", function (x) {
             // var sbooster_top = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().top);
             // var sbooster_bottom = Math.abs(document.getElementById("speedBooster1").getBoundingClientRect().bottom);
         
+
+
+            //              collision of car is detected when enemy cars get crashed by mycar
             var ecar1_left = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().left);
             var ecar1_right = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().right);
             var ecar1_top = Math.abs(document.getElementById("enemyCarImg1").getBoundingClientRect().top);
